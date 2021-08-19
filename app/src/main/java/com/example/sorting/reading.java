@@ -45,7 +45,7 @@ public class reading extends AppCompatActivity {
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setCaptureActivity(CaptureAct.class);    //세로모드 지원하기 위
         integrator.setOrientationLocked(false); //이것도
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
         integrator.setPrompt("택배 운송장 바코드 스캔"); //스캐너 하단부에 메세지 띄움
         integrator.initiateScan();
     }

@@ -11,6 +11,8 @@
     <uses-feature android:name="android.hardware.camera2" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+
     <queries>
         <package android:name="com.skt.tmap.ku" />
     </queries>
