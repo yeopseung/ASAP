@@ -5,33 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/forbackground"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/barcode"
         android:layout_width="match_parent"
-        android:layout_height="88dp"
-        android:text="택배 목록 생성하기" />
+        android:layout_height="170dp"
+        android:drawableTop="@drawable/barcode"
+        android:layout_gravity="center"
+        android:background="@color/forbackground"
+        android:text="택배 목록 생성하기"
+        android:textColor="@color/BBBBlue"/>
 
     <Button
         android:id="@+id/googleMap"
         android:layout_width="match_parent"
-        android:layout_height="88dp"
-        android:text="지도에서 확인하기" />
+        android:layout_height="170dp"
+        android:drawableTop="@drawable/googlemap"
+        android:layout_gravity="center"
+        android:background="@color/forbackground"
+        android:text="지도에서 확인하기"
+        android:textColor="@color/BBBBlue"/>
 
 
     <Button
         android:id="@+id/orderCheck"
         android:layout_width="match_parent"
-        android:layout_height="88dp"
-        android:text="배송 순서 확인하기" />
+        android:layout_height="170dp"
+        android:drawableTop="@drawable/sequence"
+        android:layout_gravity="center"
+        android:background="@color/forbackground"
+        android:text="배송 순서 확인하기"
+        android:textColor="@color/BBBBlue"/>
 
 
     <Button
         android:id="@+id/tmap"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
-        android:text="T map 연동하기" />
+        android:layout_width="150dp"
+        android:layout_height="170dp"
+        android:drawableTop="@drawable/tmaplogo"
+        android:layout_gravity="center"
+        android:background="@color/forbackground"
+        android:text="T map 연동하기"
+        android:textColor="@color/BBBBlue"/>
 
 
 </LinearLayout>
