@@ -50,7 +50,7 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
     //목록 이동
     @Override
     public boolean moveItem(int fromPosition, int toPosition){
-        Toast.makeText(mContext.getApplicationContext(), "fromPosition : "+Integer.toString(fromPosition)+" toPosition : "+ Integer.toString(toPosition),Toast.LENGTH_SHORT).show();
+
         AddressItem text = items.get(fromPosition); //클릭된 위치의 테이블이 text에 저장됨
 //        int fromId = text.getId(); //fromId에 text의 id값 저장
 //        int toId = items.get(toPosition).getId();
@@ -65,7 +65,7 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
 
 
         //Toast.makeText(mContext.getApplicationContext(),items.get(fromPosition).getAddress() + "   "+ items.get(toPosition).getAddress(),Toast.LENGTH_SHORT);
-
+        //Toast.makeText(mContext.getApplicationContext(), "fromPosition : "+Integer.toString(fromPosition)+" toPosition : "+ Integer.toString(toPosition),Toast.LENGTH_SHORT).show();
 
        return true;
     }

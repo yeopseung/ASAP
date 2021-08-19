@@ -105,13 +105,13 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
                 .onGranted(new Action<List<String>>() {
                     @Override
                     public void onAction(List<String> permissions) {
-                        showToast("허용된 권한 갯수 : " + permissions.size());
+                        //showToast("허용된 권한 갯수 : " + permissions.size());
                     }
                 })
                 .onDenied(new Action<List<String>>() {
                     @Override
                     public void onAction(List<String> permissions) {
-                        showToast("거부된 권한 갯수 : " + permissions.size());
+                        //showToast("거부된 권한 갯수 : " + permissions.size());
                     }
                 })
                 .start();
@@ -212,9 +212,9 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
 
-    public void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-    }
+//    public void showToast(String message) {
+//        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+//    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -367,7 +367,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
     private void showCurrentLocation(Double latitude, Double longitude) {
         LatLng curPoint = new LatLng(latitude, longitude);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curPoint, 15));
-        NewMarker("현 위치",latitude,longitude);
+        //NewMarker("현 위치",latitude,longitude);
     }
 
     //구글맵 새로고침 (마커 업데이트에 활용)
