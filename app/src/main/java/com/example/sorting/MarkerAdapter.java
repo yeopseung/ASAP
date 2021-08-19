@@ -1,7 +1,10 @@
 package com.example.sorting;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -10,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -132,7 +136,34 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
 //                        items.remove(curPos);
 //                        notifyItemRemoved(curPos);
 //                    }
-                    removeItem(getAdapterPosition());
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                    builder.setTitle("삭제하시겠습니까?");
+
+                    builder.setNegativeButton("아니오", new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) { }
+                    });
+
+                    builder.setPositiveButton("네", new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            removeItem(getAdapterPosition());
+                            Toast.makeText(mContext, "삭제 완료", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    AlertDialog alertDialog = builder.create();
+
+                    // 대화창 클릭시 뒷 배경 어두워지는 것 막기
+                    //alert.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                    //대화창 제목 설정
+                    //  alertDialog.setTitle("인증 요청");
+                    // 대화창 아이콘 설정
+                    alertDialog.setIcon(R.drawable.ic_baseline_fact_check_24);
+                    // 대화창 배경 색  설정
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.argb(255,62,79,92)));
+                    alertDialog.show();
 
                 }
             });
@@ -178,5 +209,10 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
     }
     public interface OnStartDragListener{
         void onStartDrag(RecyclerView.ViewHolder viewHolder);
+    }
+
+    public void onClickPopup(View view)
+    {
+
     }
 }
