@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/barcode"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:text="택배 목록 생성하기" />
+
+    <Button
+        android:id="@+id/googleMap"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:text="지도에서 확인하기" />
+
+
+    <Button
+        android:id="@+id/orderCheck"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:text="배송 순서 확인하기" />
+
+
+    <Button
+        android:id="@+id/tmap"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:text="T map 연동하기" />
+
+
+</LinearLayout>
