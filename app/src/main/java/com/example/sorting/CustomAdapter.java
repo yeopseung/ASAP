@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,6 +107,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                             }
                         }
                     });
+
+
+                    AlertDialog alertDialog = builder.create();  //AlertDialog 팝업창 설정
+                    // 대화창 클릭시 뒷 배경 어두워지는 것 막기
+                    //alert.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                    //대화창 제목 설정
+                    //  alertDialog.setTitle("인증 요청");
+                    // 대화창 아이콘 설정
+                    //        alertDialog.setIcon(R.drawable.ic_baseline_fact_check_24);
+                    // 대화창 배경 색  설정
+                    //alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.argb(255,62,79,92)));
+
+
                     builder.show();
                 }
             });
