@@ -8,47 +8,65 @@
     android:background="@color/forbackground"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/barcode"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:drawableTop="@drawable/barcode"
-        android:layout_gravity="center"
+        android:layout_height="match_parent"
         android:background="@color/forbackground"
-        android:text="택배 목록 생성하기"
-        android:textColor="@color/BBBBlue"/>
+        android:orientation="vertical">
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+                <Button
+                    android:id="@+id/barcode"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:drawableTop="@drawable/barcode"
+                    android:layout_gravity="center"
+                    android:background="@color/forbackground"
+                    android:text="택배 목록 생성하기"
+                    android:textColor="@color/BBBBlue"
+                    android:layout_margin="50dp"/>
 
-    <Button
-        android:id="@+id/googleMap"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:drawableTop="@drawable/googlemap"
-        android:layout_gravity="center"
-        android:background="@color/forbackground"
-        android:text="지도에서 확인하기"
-        android:textColor="@color/BBBBlue"/>
+                <Button
+                    android:id="@+id/googleMap"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:drawableTop="@drawable/googlemap"
+                    android:layout_gravity="center"
+                    android:background="@color/forbackground"
+                    android:text="지도에서 확인하기"
+                    android:textColor="@color/BBBBlue"/>
+          </LinearLayout>
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+                 <Button
+                    android:id="@+id/orderCheck"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:drawableTop="@drawable/sequence"
+                    android:layout_gravity="center"
+                    android:background="@color/forbackground"
+                    android:text="배송 순서 확인하기"
+                    android:textColor="@color/BBBBlue"
+                    android:layout_margin="50dp"/>
 
 
-    <Button
-        android:id="@+id/orderCheck"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:drawableTop="@drawable/sequence"
-        android:layout_gravity="center"
-        android:background="@color/forbackground"
-        android:text="배송 순서 확인하기"
-        android:textColor="@color/BBBBlue"/>
-
-
-    <Button
-        android:id="@+id/tmap"
-        android:layout_width="150dp"
-        android:layout_height="170dp"
-        android:drawableTop="@drawable/tmaplogo"
-        android:layout_gravity="center"
-        android:background="@color/forbackground"
-        android:text="T map 연동하기"
-        android:textColor="@color/BBBBlue"/>
-
+                <Button
+                    android:id="@+id/tmap"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:drawableTop="@drawable/tmaplogo"
+                    android:layout_gravity="center"
+                    android:background="@color/forbackground"
+                    android:text="T map 연동하기"
+                    android:textColor="@color/BBBBlue"/>
+          </LinearLayout>
+        </LinearLayout>
 
 </LinearLayout>
