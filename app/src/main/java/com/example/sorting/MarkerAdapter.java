@@ -160,7 +160,7 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
                     //대화창 제목 설정
                     //  alertDialog.setTitle("인증 요청");
                     // 대화창 아이콘 설정
-                    alertDialog.setIcon(R.drawable.ic_baseline_fact_check_24);
+            //        alertDialog.setIcon(R.drawable.ic_baseline_fact_check_24);
                     // 대화창 배경 색  설정
                     alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.argb(255,62,79,92)));
                     alertDialog.show();
