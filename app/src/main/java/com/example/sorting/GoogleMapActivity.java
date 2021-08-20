@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -64,6 +65,10 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_map);
 
+//        LinearLayout layout = (LinearLayout)getLayoutInflater().inflate(R.layout.toast_middle,null);
+//        Toast toast = Toast.makeText(this,"토스트",Toast.LENGTH_SHORT);
+//        toast.setView(layout);
+//        toast.show();
 
         //DB에 있는 리스트 불러오기
         mAddressItems = new ArrayList<>();

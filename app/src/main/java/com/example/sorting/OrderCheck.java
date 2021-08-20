@@ -3,6 +3,8 @@ package com.example.sorting;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,6 +59,25 @@ public class OrderCheck extends AppCompatActivity {
 
 //                Toast.makeText(OrderCheck.this, "n / N 번째 택배입니다!", Toast.LENGTH_SHORT).show();
 
+                if(orderNumber < total/3) {
+                    LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.toast_back, null);
+                    Toast toast = Toast.makeText(this, "토스트", Toast.LENGTH_SHORT);
+                    toast.setView(layout);
+                    toast.show();
+                }
+                else if(orderNumber < total/3*2) {
+                    LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.toast_middle, null);
+                    Toast toast = Toast.makeText(this, "토스트", Toast.LENGTH_SHORT);
+                    toast.setView(layout);
+                    toast.show();
+                }
+
+                else {
+                    LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.toast_front, null);
+                    Toast toast = Toast.makeText(this, "토스트", Toast.LENGTH_SHORT);
+                    toast.setView(layout);
+                    toast.show();
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
                 builder.setMessage(orderNumber + "/" + total +"번째 택배입니다!");
