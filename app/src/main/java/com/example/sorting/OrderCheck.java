@@ -59,27 +59,19 @@ public class OrderCheck extends AppCompatActivity {
 
 //                Toast.makeText(OrderCheck.this, "n / N 번째 택배입니다!", Toast.LENGTH_SHORT).show();
 
-                if(orderNumber < total/3) {
-                    LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.toast_back, null);
-                    Toast toast = Toast.makeText(this, "토스트", Toast.LENGTH_SHORT);
-                    toast.setView(layout);
-                    toast.show();
-                }
-                else if(orderNumber < total/3*2) {
-                    LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.toast_middle, null);
-                    Toast toast = Toast.makeText(this, "토스트", Toast.LENGTH_SHORT);
-                    toast.setView(layout);
-                    toast.show();
-                }
 
-                else {
-                    LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.toast_front, null);
-                    Toast toast = Toast.makeText(this, "토스트", Toast.LENGTH_SHORT);
-                    toast.setView(layout);
-                    toast.show();
-                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                if(orderNumber < (total/3)) {
+                    builder.setIcon(R.drawable.truckback);
+                }
+                else if(orderNumber < (total/3*2)) {
+                    builder.setIcon(R.drawable.truckmiddle);
+                }
+                else {
+                    builder.setIcon(R.drawable.truckfront);
+                }
 
+//                builder.setIcon(R.drawable.truckback);
                 builder.setMessage(orderNumber + "/" + total +"번째 택배입니다!");
                 builder.setTitle("택배 순서 체크");
                 builder.setNegativeButton("스캔 더 하기", new DialogInterface.OnClickListener() {
