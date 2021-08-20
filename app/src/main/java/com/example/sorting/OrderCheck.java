@@ -3,6 +3,8 @@ package com.example.sorting;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,9 +59,12 @@ public class OrderCheck extends AppCompatActivity {
 
 //                Toast.makeText(OrderCheck.this, "n / N 번째 택배입니다!", Toast.LENGTH_SHORT).show();
 
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
                 builder.setMessage(orderNumber + "/" + total +"번째 택배입니다!");
+
+
                 builder.setTitle("택배 순서 체크");
                 builder.setNegativeButton("스캔 더 하기", new DialogInterface.OnClickListener() {
                     @Override
