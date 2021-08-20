@@ -22,7 +22,7 @@
         android:layout_gravity="bottom"
         android:background="#E6EE9C"
 
-        android:visibility="gone">
+        android:visibility="visible">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -40,7 +40,6 @@
             android:id="@+id/apply_button"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
             android:text="지도 업데이트"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
