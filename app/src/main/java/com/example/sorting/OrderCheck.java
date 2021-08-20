@@ -64,12 +64,12 @@ public class OrderCheck extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 LayoutInflater inflater = getLayoutInflater();
 
-                if(orderNumber < (total/3)) {
+                if(orderNumber < ((double)total/3)) {
                     builder.setIcon(R.drawable.truckback);
                     View layout = inflater.inflate(R.layout.toast_back,null);
                     builder.setView(layout);
                 }
-                else if(orderNumber < (total/3*2)) {
+                else if(orderNumber < (((double)total/3)*2)) {
                     builder.setIcon(R.drawable.truckmiddle);
                     View layout = inflater.inflate(R.layout.toast_middle,null);
                     builder.setView(layout);
@@ -81,8 +81,8 @@ public class OrderCheck extends AppCompatActivity {
                 }
 
 
-                builder.setMessage("총 택배 수 : " + total);
-                builder.setMessage(Ronum +"번째로 실어주세요!");
+//                builder.setMessage("총 택배 수 : " + total + "\n");
+                builder.setMessage("총 택배 수 : " + total + "\n" + Ronum +"번째로 실어주세요!");
                 builder.setTitle("배송 순서 조회");
                 builder.setNegativeButton("스캔 더 하기", new DialogInterface.OnClickListener() {
                     @Override

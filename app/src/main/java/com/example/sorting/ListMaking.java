@@ -1,6 +1,7 @@
 package com.example.sorting;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class ListMaking extends AppCompatActivity {
     private Button oldList;
     private DBHelper mDBHelper = new DBHelper(this);
     private Algorithm algorithm = new Algorithm(this);
+    private  AlertDialog.Builder builder = new AlertDialog.Builder(this);
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +48,29 @@ public class ListMaking extends AppCompatActivity {
             public void onClick(View v) {
                 ArrayList<AddressItem> addressItems = mDBHelper.getAddressList();
 //                algorithm.sortAlgorithm(addressItems,37.47716016671259, 126.86673391650392);
-                mDBHelper.dbInitialize(); // db 초기화
 
-                Intent intent = new Intent(ListMaking.this,reading.class);
-                startActivity(intent);
+
+
+                builder.setMessage("새 목록이 생성되면 기존 목록이 삭제됩니다.\n계속하시겠습니까?");
+
+                builder.setNegativeButton("네", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mDBHelper.dbInitialize(); // db 초기화
+                        Intent intent = new Intent(ListMaking.this,reading.class);
+                        startActivity(intent);
+                    }
+                }).setPositiveButton("아니오", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
+
+
         });
     }
 }
