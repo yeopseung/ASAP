@@ -1,13 +1,10 @@
 package com.example.sorting;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.FragmentTransaction;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -15,29 +12,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.nfc.Tag;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
-import android.widget.SlidingDrawer;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -47,16 +34,14 @@ import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCallback, MarkerAdapter.OnStartDragListener {
     private GoogleMap googleMap;
 
-    Animation translateLeftAnim;
-    Animation translateRightAnim;
+    Animation translateUpAnim;
+    Animation translateDownAnim;
     ConstraintLayout markerlist;
     Button button;
     boolean isPageOpen=false;
@@ -122,24 +107,24 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
 
         //슬라이딩 애니메이션을 활용 (화면 열기, 닫기)
         markerlist= findViewById(R.id.markerlist);
-        translateLeftAnim = AnimationUtils.loadAnimation(this,R.anim.translate_left);
-        translateRightAnim = AnimationUtils.loadAnimation(this,R.anim.translate_right);
+        translateUpAnim = AnimationUtils.loadAnimation(this,R.anim.translate_up);
+        translateDownAnim = AnimationUtils.loadAnimation(this,R.anim.translate_down);
 
         SlidingAnimationListener animListener = new SlidingAnimationListener();
-        translateLeftAnim.setAnimationListener(animListener);
-        translateRightAnim.setAnimationListener(animListener);
+        translateUpAnim.setAnimationListener(animListener);
+        translateDownAnim.setAnimationListener(animListener);
 
         button = findViewById(R.id.sliding_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(isPageOpen){
-                    markerlist.startAnimation(translateLeftAnim);
+                    markerlist.startAnimation(translateUpAnim);
 
                 }
                 else {
                     markerlist.setVisibility(View.VISIBLE);
-                    markerlist.startAnimation(translateRightAnim);
+                    markerlist.startAnimation(translateDownAnim);
 
                 }
             }
@@ -215,7 +200,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
 
 
 //    public void showToast(String message) {
-//        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+//       Toast.makeText(this, message, Toast.LENGTH_LONG).show();
 //    }
 
     @Override
@@ -228,7 +213,6 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             //현 위치를 불러와주는 함수
             startLocationService();
-
             //GoogleMap에서 제공하는 현 위치 불러와주는 함수
             googleMap.setMyLocationEnabled(true);
             googleMap.getUiSettings().setZoomControlsEnabled(true);
