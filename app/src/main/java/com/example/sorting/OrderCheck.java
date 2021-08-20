@@ -57,7 +57,7 @@ public class OrderCheck extends AppCompatActivity {
                 address = st.nextToken();        //주소 전달
                 int total = addressItems.size();
                 int orderNumber = parcelOrder(trackingNum);
-
+                int Ronum = (addressItems.size() - orderNumber + 1);
 //                Toast.makeText(OrderCheck.this, "n / N 번째 택배입니다!", Toast.LENGTH_SHORT).show();
 
 
@@ -81,8 +81,9 @@ public class OrderCheck extends AppCompatActivity {
                 }
 
 
-                builder.setMessage(orderNumber + "/" + total +"번째 택배입니다!");
-                builder.setTitle("택배 순서 체크");
+                builder.setMessage("총 택배 수 : " + total);
+                builder.setMessage(Ronum +"번째로 실어주세요!");
+                builder.setTitle("배송 순서 조회");
                 builder.setNegativeButton("스캔 더 하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -110,6 +111,7 @@ public class OrderCheck extends AppCompatActivity {
         for(int i=0; i<addressItems.size();i++) {
             if (addressItems.get(i).getNumber().equals(number)){ // QR코드의 운송장번호와 복사본의 운송장번호가 같을 경우
                 parcel_order = (i+1);
+//                parcel_order =  (addressItems.size() - i);
                 break;  //parcel_order에 순서를 저장
             }
             else if(i == (addressItems.size()-1)){  // 복사본에 일치하는 데이터가 없는 경우
