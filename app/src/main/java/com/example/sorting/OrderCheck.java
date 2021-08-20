@@ -10,9 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class OrderCheck extends AppCompatActivity {
+    DBHelper mDBHelper = new DBHelper(this);
+    ArrayList<AddressItem> addressItems = new ArrayList<AddressItem>();
     String trackingNum;  //운송장번호
     String address;      //주소
 
@@ -72,4 +75,25 @@ public class OrderCheck extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
+    private int parcelOrder(String number){ // QR 코드가 받은 운송장 번호에 해당하는 택배가 몇 번째 순서인지 알려주는 메소드
+        int parcel_order = 0;   // 0번째로 초기화
+
+        addressItems = mDBHelper.getAddressList();
+        for(int i=0; i<addressItems.size();i++) {
+            if (addressItems.get(i).getNumber().equals(number)){ // QR코드의 운송장번호와 복사본의 운송장번호가 같을 경우
+                parcel_order = (addressItems.size()-i);     //parcel_order에 순서를 저장
+            }
+            else if(i == (addressItems.size()-1)){  // 복사본에 일치하는 데이터가 없는 경우
+                parcel_order = -1;
+            }
+            else
+                ;
+        }
+
+        return parcel_order;
+    }
+
 }
+
