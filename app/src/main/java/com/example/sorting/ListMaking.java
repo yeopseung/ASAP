@@ -3,6 +3,7 @@ package com.example.sorting;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
@@ -20,13 +21,12 @@ public class ListMaking extends AppCompatActivity {
     private Button newList;
     private Button oldList;
     private DBHelper mDBHelper = new DBHelper(this);
-    private Algorithm algorithm = new Algorithm(this);
-    private  AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_listmaking);
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         oldList = findViewById(R.id.btn_oldList); // btn_oldList 버튼을 눌렀을 때 기존 DB에 추가
         oldList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +47,6 @@ public class ListMaking extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ArrayList<AddressItem> addressItems = mDBHelper.getAddressList();
-//                algorithm.sortAlgorithm(addressItems,37.47716016671259, 126.86673391650392);
 
 
 

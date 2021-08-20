@@ -61,42 +61,47 @@ public class OrderCheck extends AppCompatActivity {
 //                Toast.makeText(OrderCheck.this, "n / N 번째 택배입니다!", Toast.LENGTH_SHORT).show();
 
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                LayoutInflater inflater = getLayoutInflater();
 
-                if(orderNumber < ((double)total/3)) {
-                    builder.setIcon(R.drawable.truckback);
-                    View layout = inflater.inflate(R.layout.toast_back,null);
-                    builder.setView(layout);
-                }
-                else if(orderNumber < (((double)total/3)*2)) {
-                    builder.setIcon(R.drawable.truckmiddle);
-                    View layout = inflater.inflate(R.layout.toast_middle,null);
-                    builder.setView(layout);
-                }
-                else {
-                    builder.setIcon(R.drawable.truckfront);
-                    View layout = inflater.inflate(R.layout.toast_front,null);
-                    builder.setView(layout);
-                }
-
-
-//                builder.setMessage("총 택배 수 : " + total + "\n");
-                builder.setMessage("총 택배 수 : " + total + "\n" + Ronum +"번째로 실어주세요!");
-                builder.setTitle("배송 순서 조회");
-                builder.setNegativeButton("스캔 더 하기", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        scanCode();
+                if(orderNumber>0){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    LayoutInflater inflater = getLayoutInflater();
+                    if(orderNumber < ((double)total/3)) {
+                        builder.setIcon(R.drawable.truckback);
+                        View layout = inflater.inflate(R.layout.toast_back,null);
+                        builder.setView(layout);
                     }
-                }).setPositiveButton("끝내기", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
+                    else if(orderNumber < (((double)total/3)*2)) {
+                        builder.setIcon(R.drawable.truckmiddle);
+                        View layout = inflater.inflate(R.layout.toast_middle,null);
+                        builder.setView(layout);
                     }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                    else {
+                        builder.setIcon(R.drawable.truckfront);
+                        View layout = inflater.inflate(R.layout.toast_front,null);
+                        builder.setView(layout);
+                    }
+
+//                    builder.setMessage("총 택배 수 : " + total + "\n");
+                    builder.setMessage("총 택배 수 : " + total + "\n" + Ronum +"번째로 실어주세요!");
+                    builder.setTitle("배송 순서 조회");
+                    builder.setNegativeButton("스캔 더 하기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            scanCode();
+                        }
+                    }).setPositiveButton("끝내기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+
+
+
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
