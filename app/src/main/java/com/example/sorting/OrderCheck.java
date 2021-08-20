@@ -3,6 +3,8 @@ package com.example.sorting;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -53,7 +55,6 @@ public class OrderCheck extends AppCompatActivity {
                 addressItems = mDBHelper.getAddressList();
                 trackingNum = st.nextToken();   //운송장번호 전달
                 address = st.nextToken();        //주소 전달
-
                 int total = addressItems.size();
                 int orderNumber = parcelOrder(trackingNum);
 
@@ -61,17 +62,25 @@ public class OrderCheck extends AppCompatActivity {
 
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                LayoutInflater inflater = getLayoutInflater();
+
                 if(orderNumber < (total/3)) {
                     builder.setIcon(R.drawable.truckback);
+                    View layout = inflater.inflate(R.layout.toast_back,null);
+                    builder.setView(layout);
                 }
                 else if(orderNumber < (total/3*2)) {
                     builder.setIcon(R.drawable.truckmiddle);
+                    View layout = inflater.inflate(R.layout.toast_middle,null);
+                    builder.setView(layout);
                 }
                 else {
                     builder.setIcon(R.drawable.truckfront);
+                    View layout = inflater.inflate(R.layout.toast_front,null);
+                    builder.setView(layout);
                 }
 
-//                builder.setIcon(R.drawable.truckback);
+
                 builder.setMessage(orderNumber + "/" + total +"번째 택배입니다!");
                 builder.setTitle("택배 순서 체크");
                 builder.setNegativeButton("스캔 더 하기", new DialogInterface.OnClickListener() {
