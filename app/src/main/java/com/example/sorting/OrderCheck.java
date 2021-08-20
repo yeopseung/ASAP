@@ -48,14 +48,18 @@ public class OrderCheck extends AppCompatActivity {
         if (result != null) { //null 아니면 정상적으로 qr코드 스캐너가 전달한 ActivityResult 값
             if (result.getContents() != null) { //스캐너가 qr코드를 정상적으로 인식 했다
                 st = new StringTokenizer(result.getContents(), "\n");
+                addressItems = mDBHelper.getAddressList();
                 trackingNum = st.nextToken();   //운송장번호 전달
                 address = st.nextToken();        //주소 전달
+
+                int total = addressItems.size();
+                int orderNumber = parcelOrder(address);
 
 //                Toast.makeText(OrderCheck.this, "n / N 번째 택배입니다!", Toast.LENGTH_SHORT).show();
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-                builder.setMessage("n / N 번째 택배입니다!");
+                builder.setMessage(orderNumber + "/" + total +"번째 택배입니다!");
                 builder.setTitle("택배 순서 체크");
                 builder.setNegativeButton("스캔 더 하기", new DialogInterface.OnClickListener() {
                     @Override
