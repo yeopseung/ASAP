@@ -109,13 +109,14 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements GestureDetector.OnGestureListener{
-        TextView textView;
+        TextView tv_address;
+        TextView tv_order;
         private GestureDetector gestureDetector;
 
         public ViewHolder(View itemView){
             super(itemView);
-            textView= itemView.findViewById(R.id.textView);
-
+            tv_address= itemView.findViewById(R.id.tv_address);
+            tv_order= itemView.findViewById(R.id.tv_order);
             gestureDetector = new GestureDetector(itemView.getContext(),this);
             itemView.findViewById(R.id.drag_handle).setOnTouchListener(new View.OnTouchListener() {
                 @Override
@@ -172,8 +173,8 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
         }
 
         public void setItem(AddressItem item){
-            textView.setText(item.getAddress());
-
+            tv_address.setText(item.getAddress());
+            tv_order.setText(Integer.toString(items.indexOf(item)+1));
         }
 
         @Override

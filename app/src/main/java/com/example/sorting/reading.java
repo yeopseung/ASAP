@@ -29,7 +29,6 @@ public class reading extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setInit();
     }
 

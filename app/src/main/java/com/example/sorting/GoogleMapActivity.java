@@ -22,6 +22,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -45,6 +46,8 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
     Animation translateDownAnim;
     ConstraintLayout markerlist;
     Button button;
+
+
     boolean isPageOpen=false;
     private DBHelper mDBHelper = new DBHelper(this);
     private ArrayList<AddressItem> mAddressItems;
@@ -231,14 +234,14 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
             mLatitude = mAddressItems.get(i).getLatitude();
             mLongitude = mAddressItems.get(i).getLongitude();
             mAddress = mAddressItems.get(i).getAddress();
-            NewMarker(mAddress,mLatitude,mLongitude);
+            NewMarker(mAddress,mLatitude,mLongitude,i+1);
         }
 
 
-//        NewMarker(37.478593, 126.866050, "광명고등학교");
-//        NewMarker(37.48704614469403, 126.86800142510582, "광명북초등학교");
+//        NewMarker("광명고등학교", 126.866050, 37.478593,);
+//        NewMarker("광명북초등학교",37.48704614469403, 126.86800142510582);
 //        NewMarker(37.484143880672896, 126.86361479883942, "광명동초등학교");
-//        NewMarker(37.48511581598014, 126.87027489645584, "도덕초등학교");
+//        NewMarker("도덕초등학교",37.48511581598014, 126.87027489645584, "");
 //
 
     }
@@ -291,10 +294,11 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
 
 
     //새로운 마커를 추가해주는 함수 (위도, 경도, 주소) 입력
-    public Marker NewMarker(String name, double latitude, double longtitude){
+    public Marker NewMarker(String name, double latitude, double longtitude, int i){
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(new LatLng(latitude, longtitude));
-        markerOptions.title(name);
+        markerOptions.title(Integer.toString(i));
+        markerOptions.snippet(name);
         Marker marker = googleMap.addMarker(markerOptions);
         return marker;
     }
