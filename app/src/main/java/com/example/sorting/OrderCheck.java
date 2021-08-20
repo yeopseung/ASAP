@@ -53,7 +53,7 @@ public class OrderCheck extends AppCompatActivity {
                 address = st.nextToken();        //주소 전달
 
                 int total = addressItems.size();
-                int orderNumber = parcelOrder(address);
+                int orderNumber = parcelOrder(trackingNum);
 
 //                Toast.makeText(OrderCheck.this, "n / N 번째 택배입니다!", Toast.LENGTH_SHORT).show();
 
@@ -87,7 +87,8 @@ public class OrderCheck extends AppCompatActivity {
         addressItems = mDBHelper.getAddressList();
         for(int i=0; i<addressItems.size();i++) {
             if (addressItems.get(i).getNumber().equals(number)){ // QR코드의 운송장번호와 복사본의 운송장번호가 같을 경우
-                parcel_order = (addressItems.size()-i);     //parcel_order에 순서를 저장
+                parcel_order = (i+1);
+                break;  //parcel_order에 순서를 저장
             }
             else if(i == (addressItems.size()-1)){  // 복사본에 일치하는 데이터가 없는 경우
                 parcel_order = -1;
