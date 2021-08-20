@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,12 +17,39 @@ public class MainActivity extends AppCompatActivity {
     private Button googleMap;
     private Button tmap;
 
+    LinearLayout left;
+    LinearLayout right;
+    Animation translateOpenLeftAnim;
+    Animation translateOpenRightAnim;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        translateOpenLeftAnim = AnimationUtils.loadAnimation(this,R.anim.translate_open_left);
+        translateOpenRightAnim = AnimationUtils.loadAnimation(this,R.anim.translate_open_right);
+
+        SlidingAnimationListener animListener = new SlidingAnimationListener();
+        translateOpenLeftAnim.setAnimationListener(animListener);
+        translateOpenRightAnim.setAnimationListener(animListener);
+
+
+        left = findViewById(R.id.left);
+        left.startAnimation(translateOpenLeftAnim);
+        left.setVisibility(View.VISIBLE);
+
+        right = findViewById(R.id.right);
+        right.startAnimation(translateOpenRightAnim);
+        right.setVisibility(View.VISIBLE);
+
+
+
+
+
+
         read = findViewById(R.id.barcode);
+
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,4 +83,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    class SlidingAnimationListener implements Animation.AnimationListener{
+
+        @Override
+        public void onAnimationStart(Animation animation) {
+
+        }
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
+
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {
+
+        }
+    }
 }
+
