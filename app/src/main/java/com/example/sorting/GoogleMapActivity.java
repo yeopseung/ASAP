@@ -87,7 +87,6 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
 //        addressItem.setLatitude(37.478593);
 //        addressItem.setLongitude(126.866050);
 //
-
         //mapFragment 선언
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
