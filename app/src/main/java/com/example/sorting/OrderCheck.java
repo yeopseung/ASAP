@@ -100,8 +100,6 @@ public class OrderCheck extends AppCompatActivity {
                     dialog.show();
                 }
 
-
-
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
