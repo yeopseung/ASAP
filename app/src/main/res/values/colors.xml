@@ -11,4 +11,6 @@
     <color name="lightblue">#d4fffe</color>
     <color name="BBBBlue">#005eff</color>
     <color name="OOOrange">#ff7b00</color>
+    <color name="listbackground">#feffe0</color>
+    <color name="realbackground">#e0f8ff</color>
 </resources>
