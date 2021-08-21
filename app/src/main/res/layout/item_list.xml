@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">>
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 android:gravity="center"
                 android:text="운송장번호"
                 android:textAlignment="center"
-                android:textColor="@color/BBBBlue"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -41,7 +41,7 @@
                 android:gravity="center"
                 android:text="주소"
                 android:textAlignment="center"
-                android:textColor="@color/OOOrange"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
