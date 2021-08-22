@@ -166,6 +166,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
             public void onClick(View v) {
                 ArrayList<AddressItem> addressItems = mDBHelper.getAddressList();
                 algorithm.sortAlgorithm(addressItems,curLocation.getLatitude(),curLocation.getLongitude());  //현재 위치를 알고리즘에 반영
+                showToast("자동정렬 완료");
             }
         });
 
@@ -206,9 +207,9 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
 
-//    public void showToast(String message) {
-//       Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-//    }
+    public void showToast(String message) {
+       Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
