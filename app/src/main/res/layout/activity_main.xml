@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:text="하게"
+            android:text="하게!"
             android:textColor="#FFC400"
             android:textSize="30dp"
             android:textStyle="bold"
@@ -78,14 +78,14 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="96dp"
-            android:layout_height="124dp"
+            android:layout_width="130dp"
+            android:layout_height="140dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/dddf" />
+            app:srcCompat="@drawable/asap_man" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -121,7 +121,7 @@
                 android:text="택배 목록 생성하기"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="@dimen/permission_sp_20" />
+                android:textSize="@dimen/permission_sp_14" />
 
             <Button
                 android:id="@+id/googleMap"
@@ -134,7 +134,7 @@
                 android:text="지도에서 확인하기"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="@dimen/permission_sp_20"/>
+                android:textSize="@dimen/permission_sp_14"/>
         </LinearLayout>
 
         <LinearLayout
@@ -159,7 +159,7 @@
                 android:text="배송 순서 확인하기"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="@dimen/permission_sp_20" />
+                android:textSize="@dimen/permission_sp_14" />
 
             <Button
                 android:id="@+id/tmap"
@@ -173,7 +173,7 @@
                 android:text="T map 연동하기"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="@dimen/permission_sp_20"/>
+                android:textSize="@dimen/permission_sp_14"/>
         </LinearLayout>
     </LinearLayout>
 

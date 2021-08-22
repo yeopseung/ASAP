@@ -14,7 +14,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         ImageView animation2 = (ImageView) findViewById(R.id.animation2);
-        Glide.with(this).load(R.drawable.animation2).into(animation2);
+        Glide.with(this).load(R.drawable.asap_loading).into(animation2);
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

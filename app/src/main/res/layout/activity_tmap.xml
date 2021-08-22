@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#F1EDF6"
     tools:context=".TmapActivity">
 
     <LinearLayout
@@ -15,16 +15,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#8096ef"
             android:orientation="vertical"
-            android:background="#8096ef">
+           >
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/permission_dp_15"
                 android:text="경유지 순서"
                 android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="40dp"
+                android:textColor="#EFD686"
+                android:textSize="@dimen/permission_dp_30"
                 android:textStyle="bold" />
         </LinearLayout>
 
