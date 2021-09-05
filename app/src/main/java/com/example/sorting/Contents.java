@@ -20,8 +20,6 @@ public class Contents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contents);
 
-//        mDBHelper.InsertAddress("1","광명고등학교",37.478593,126.866050);
-
         setInit();
     }
 

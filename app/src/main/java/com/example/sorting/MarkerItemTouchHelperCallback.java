@@ -3,6 +3,8 @@ package com.example.sorting;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.jetbrains.annotations.NotNull;
+
 public class MarkerItemTouchHelperCallback extends ItemTouchHelper.Callback {
     private OnItemTouchListener listener;
 
@@ -11,12 +13,12 @@ public class MarkerItemTouchHelperCallback extends ItemTouchHelper.Callback {
     }
 
     @Override
-    public int getMovementFlags( RecyclerView recyclerView,  RecyclerView.ViewHolder viewHolder) {
+    public int getMovementFlags(@NotNull RecyclerView recyclerView, RecyclerView.@NotNull ViewHolder viewHolder) {
         return makeMovementFlags(ItemTouchHelper.UP|ItemTouchHelper.DOWN,ItemTouchHelper.START|ItemTouchHelper.END);
     }
 
     @Override
-    public boolean onMove( RecyclerView recyclerView,  RecyclerView.ViewHolder viewHolder,  RecyclerView.ViewHolder target) {
+    public boolean onMove(@NotNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
         return listener.moveItem(viewHolder.getAdapterPosition(),target.getAdapterPosition());
     }
 

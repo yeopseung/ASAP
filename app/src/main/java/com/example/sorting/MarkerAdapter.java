@@ -2,9 +2,6 @@ package com.example.sorting;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -16,16 +13,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder> implements MarkerItemTouchHelperCallback.OnItemTouchListener {
 
-    ArrayList<AddressItem> items = new ArrayList<AddressItem>();
+    ArrayList<AddressItem> items;
     private OnStartDragListener onStartDragListener;
     private DBHelper mDBHelper;
     private Context mContext;
-    int temposition=0;
-
 
 
     public MarkerAdapter(ArrayList<AddressItem> addressItems, Context mContext, OnStartDragListener onStartDragListener) {
@@ -55,8 +52,6 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
     @Override
     public boolean moveItem(int fromPosition, int toPosition){
 
-        AddressItem text = items.get(fromPosition); //클릭된 위치의 테이블이 text에 저장됨
-
         mDBHelper.swapAddress(items,fromPosition,toPosition);// DB에서 swapping
 
         items= mDBHelper.getAddressList(); //새로 추가한 부분 : items에 DB가 지속적으로 반영되게 swap끝난 DB 대입
@@ -81,7 +76,7 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
 
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public @NotNull ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.marker_items,parent,false);
 

@@ -21,8 +21,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,11 +28,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,17 +43,14 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
 
     Animation translateUpAnim;
     Animation translateDownAnim;
-    ConstraintLayout markerlist;
-    Button button;
+    ConstraintLayout markers;
+    Button sliding_button;
 
 
     boolean isPageOpen=false;
     private DBHelper mDBHelper = new DBHelper(this);
     private ArrayList<AddressItem> mAddressItems;
 
-    private String mAddress;
-    private double mLongitude;
-    private double mLatitude;
     private Location curLocation;
 
     private MarkerAdapter adapter;
@@ -78,6 +74,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
 
         //mapFragment 선언
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
         AndPermission.with(this)
@@ -102,7 +99,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
 
 
         //슬라이딩 애니메이션을 활용 (화면 열기, 닫기)
-        markerlist= findViewById(R.id.markerlist);
+        markers = findViewById(R.id.markerlist);
         translateUpAnim = AnimationUtils.loadAnimation(this,R.anim.translate_up);
         translateDownAnim = AnimationUtils.loadAnimation(this,R.anim.translate_down);
 
@@ -110,17 +107,17 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
         translateUpAnim.setAnimationListener(animListener);
         translateDownAnim.setAnimationListener(animListener);
 
-        button = findViewById(R.id.sliding_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        sliding_button = findViewById(R.id.sliding_button);
+        sliding_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(isPageOpen){
-                    markerlist.startAnimation(translateUpAnim);
+                    markers.startAnimation(translateUpAnim);
 
                 }
                 else {
-                    markerlist.setVisibility(View.VISIBLE);
-                    markerlist.startAnimation(translateDownAnim);
+                    markers.setVisibility(View.VISIBLE);
+                    markers.startAnimation(translateDownAnim);
 
                 }
             }
@@ -179,12 +176,12 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
         @Override
         public void onAnimationEnd(Animation animation) {
             if(isPageOpen){
-                markerlist.setVisibility(View.INVISIBLE);
-                button.setText("마커목록");
+                markers.setVisibility(View.INVISIBLE);
+                sliding_button.setText("마커목록");
                 isPageOpen = false;
             }
             else{
-                button.setText("닫기");
+                sliding_button.setText("닫기");
                 isPageOpen = true;
             }
         }
@@ -201,11 +198,9 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(@NotNull GoogleMap googleMap) {
         this.googleMap = googleMap;
 
-
-        Context context = this;
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             //현 위치를 불러와주는 함수
@@ -220,28 +215,27 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
 
         //현재 마커 갱신
         for (int i=0;i< mAddressItems.size();i++){
-            mLatitude = mAddressItems.get(i).getLatitude();
-            mLongitude = mAddressItems.get(i).getLongitude();
-            mAddress = mAddressItems.get(i).getAddress();
-            NewMarker(mAddress,mLatitude,mLongitude,i+1);
+            double mLatitude = mAddressItems.get(i).getLatitude();
+            double mLongitude = mAddressItems.get(i).getLongitude();
+            String mAddress = mAddressItems.get(i).getAddress();
+            NewMarker(mAddress, mLatitude, mLongitude,i+1);
         }
 
     }
 
 
     //새로운 마커를 추가해주는 함수 (위도, 경도, 주소) 입력
-    public Marker NewMarker(String name, double latitude, double longtitude, int i){
+    public void NewMarker(String name, double latitude, double longitude, int i){
         MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(new LatLng(latitude, longtitude));
+        markerOptions.position(new LatLng(latitude, longitude));
         markerOptions.title(Integer.toString(i));
         markerOptions.snippet(name);
-        Marker marker = googleMap.addMarker(markerOptions);
-        return marker;
+        googleMap.addMarker(markerOptions);
     }
 
 
     //GPS
-    class GPSListener implements LocationListener {
+    static class GPSListener implements LocationListener {
         public void onLocationChanged(Location location) { }
 
         public void onProviderDisabled(String provider) { }

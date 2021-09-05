@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -120,8 +118,6 @@ public class OrderCheck extends AppCompatActivity {
             else if(i == (addressItems.size()-1)){  // 복사본에 일치하는 데이터가 없는 경우
                 parcel_order = -1;
             }
-            else
-                ;
         }
 
         return parcel_order;
