@@ -282,7 +282,6 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
     private void showCurrentLocation(Double latitude, Double longitude) {
         LatLng curPoint = new LatLng(latitude, longitude);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curPoint, 15));
-        //NewMarker("현 위치",latitude,longitude);
     }
 
     //구글맵 새로고침 (마커 업데이트에 활용)
