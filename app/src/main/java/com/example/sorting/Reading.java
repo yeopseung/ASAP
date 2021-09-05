@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class reading extends AppCompatActivity {
+public class Reading extends AppCompatActivity {
     String trackingNum;  //운송장번호
     String address;      //주소
     double latitude;     //위도
@@ -51,7 +51,7 @@ public class reading extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        GeocodeUtil geocodeUtil = new GeocodeUtil(reading.this);
+        GeocodeUtil geocodeUtil = new GeocodeUtil(Reading.this);
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data); // 결과값 파싱
         StringTokenizer st;
 
@@ -65,7 +65,7 @@ public class reading extends AppCompatActivity {
 
                 // insert DB
                 mDBHelper.InsertAddress(trackingNum, address, latitude, longitude);
-                Toast.makeText(reading.this, "할일 목록에 추가 되었습니다 !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Reading.this, "할일 목록에 추가 되었습니다 !", Toast.LENGTH_SHORT).show();
 
                 scanCode();
 //

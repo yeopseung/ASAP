@@ -90,27 +90,5 @@ public class Algorithm extends DBHelper {
 
     }
 
-//    private int[] runAlgorithm (ArrayList<AddressItem> addressItems, double currXLocation, double currYLocation) {
-//        IsVisit = new boolean[addressItems.size()];
-//        for(int i=0; i<IsVisit.length; i++){ IsVisit[i] = false; }
-//        int[] array = new int[IsVisit.length];
-//        for(int i=0; i<IsVisit.length; i++){
-//            double shortestDist = 100; // 거리 중 최댓값보다 항상 커야 해서 무식하게 100 넣었음.
-//            int shortestIndex = -1;
-//            for(int j=0; j<IsVisit.length; j++){
-//                if(!IsVisit[j]){
-//                    double tmp = calcEachDistance(currXLocation, currYLocation, addressItems.get(j).getLatitude(), addressItems.get(j).getLongitude());
-//                    if(tmp < shortestDist){
-//                        shortestDist = tmp;
-//                        shortestIndex = j;
-//                    }
-//                }
-//            }
-//
-//            array[i] = shortestIndex;
-//        }
-//        return array;
-//    }
-
 
 }

@@ -56,20 +56,12 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
     public boolean moveItem(int fromPosition, int toPosition){
 
         AddressItem text = items.get(fromPosition); //클릭된 위치의 테이블이 text에 저장됨
-//        int fromId = text.getId(); //fromId에 text의 id값 저장
-//        int toId = items.get(toPosition).getId();
-
 
         mDBHelper.swapAddress(items,fromPosition,toPosition);// DB에서 swapping
 
         items= mDBHelper.getAddressList(); //새로 추가한 부분 : items에 DB가 지속적으로 반영되게 swap끝난 DB 대입
 
         notifyItemMoved(fromPosition,toPosition); // RecyclerView에 반영
-
-
-
-        //Toast.makeText(mContext.getApplicationContext(),items.get(fromPosition).getAddress() + "   "+ items.get(toPosition).getAddress(),Toast.LENGTH_SHORT);
-        //Toast.makeText(mContext.getApplicationContext(), "fromPosition : "+Integer.toString(fromPosition)+" toPosition : "+ Integer.toString(toPosition),Toast.LENGTH_SHORT).show();
 
        return true;
     }
@@ -129,14 +121,6 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
             itemView.findViewById(R.id.remove).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    int curPos = getAdapterPosition(); // 현재 클릭한 리스트 아이템 위치
-//                    if(curPos!=RecyclerView.NO_POSITION) {
-//                        AddressItem addressItem = items.get(curPos);
-//                        int id = addressItem.getId();
-//                        mDBHelper.deleteAddress(id);
-//                        items.remove(curPos);
-//                        notifyItemRemoved(curPos);
-//                    }
                     AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                     builder.setTitle("삭제하시겠습니까?");
 
@@ -155,16 +139,6 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
                     });
 
                     AlertDialog alertDialog = builder.create();  //AlertDialog 팝업창 설정
-                    // 대화창 클릭시 뒷 배경 어두워지는 것 막기
-                    //alert.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-                    //대화창 제목 설정
-                    //  alertDialog.setTitle("인증 요청");
-                    // 대화창 아이콘 설정
-                    //        alertDialog.setIcon(R.drawable.ic_baseline_fact_check_24);
-                    // 대화창 배경 색  설정
-                    //alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.argb(255,62,79,92)));
-
-
                     alertDialog.show();
 
                 }
@@ -211,10 +185,5 @@ public class MarkerAdapter extends RecyclerView.Adapter<MarkerAdapter.ViewHolder
     }
     public interface OnStartDragListener{
         void onStartDrag(RecyclerView.ViewHolder viewHolder);
-    }
-
-    public void onClickPopup(View view)
-    {
-
     }
 }

@@ -31,7 +31,7 @@ public class ListMaking extends AppCompatActivity {
         list.setNegativeButton("기존 목록에 추가", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(ListMaking.this, reading.class);
+                Intent intent = new Intent(ListMaking.this, Reading.class);
                 startActivity(intent);
             }
         }).setPositiveButton("새 목록 만들기", new DialogInterface.OnClickListener() {
@@ -43,7 +43,7 @@ public class ListMaking extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface di, int which) {
                             mDBHelper.dbInitialize(); // db 초기화
-                            Intent intent = new Intent(ListMaking.this,reading.class);
+                            Intent intent = new Intent(ListMaking.this,Reading.class);
                             startActivity(intent);
                         }
                     }).setPositiveButton("아니오", new DialogInterface.OnClickListener() {

@@ -68,11 +68,6 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_map);
 
-//        LinearLayout layout = (LinearLayout)getLayoutInflater().inflate(R.layout.toast_middle,null);
-//        Toast toast = Toast.makeText(this,"토스트",Toast.LENGTH_SHORT);
-//        toast.setView(layout);
-//        toast.show();
-
         //DB에 있는 리스트 불러오기
         mAddressItems = new ArrayList<>();
         mAddressItems = mDBHelper.getAddressList();
@@ -80,13 +75,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
             adapter = new MarkerAdapter(mAddressItems,this,this);
         }
 
-//        AddressItem addressItem = new AddressItem();
-//        addressItem.setId(1);
-//        addressItem.setNumber("1");
-//        addressItem.setAddress("광명고등학교");
-//        addressItem.setLatitude(37.478593);
-//        addressItem.setLongitude(126.866050);
-//
+
         //mapFragment 선언
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -237,60 +226,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
             NewMarker(mAddress,mLatitude,mLongitude,i+1);
         }
 
-
-//        NewMarker("광명고등학교", 126.866050, 37.478593,);
-//        NewMarker("광명북초등학교",37.48704614469403, 126.86800142510582);
-//        NewMarker(37.484143880672896, 126.86361479883942, "광명동초등학교");
-//        NewMarker("도덕초등학교",37.48511581598014, 126.87027489645584, "");
-//
-
     }
-
-
-//    public  static Location ChangeAddrtoLatLng(Context context, String address, int size){
-//        Location location = new Location("");
-//        final Geocoder geocoder = new Geocoder(context);
-//        List<Address> addresses = null;
-//
-//            try{
-//                addresses = geocoder.getFromLocationName(address,1);
-//            }catch (IOException e){
-//                e.printStackTrace();
-//                Log.d("tag","onComplete: 주소변환 실패");
-//            }
-//            if(addresses != null){
-//                for(int j =0; j< addresses.size(); j++){
-//                    Address latlng = addresses.get(j);
-//                    location.setLatitude(latlng.getLatitude());
-//                    location.setLongitude(latlng.getLongitude());
-//                }
-//            }
-//        return location;
-//    }
-
-//    public static Location findGeoPoint(Context mcontext, String address) {
-//        Location loc = new Location("");
-//        Geocoder coder = new Geocoder(mcontext);
-//        List<Address> addr = null;// 한좌표에 대해 두개이상의 이름이 존재할수있기에 주소배열을 리턴받기 위해 설정
-//
-//        try {
-//            addr = coder.getFromLocationName(address, 5);
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }// 몇개 까지의 주소를 원하는지 지정 1~5개 정도가 적당
-//        if (addr != null) {
-//            for (int i = 0; i < addr.size(); i++) {
-//                Address lating = addr.get(i);
-//                double lat = lating.getLatitude(); // 위도가져오기
-//                double lon = lating.getLongitude(); // 경도가져오기
-//                loc.setLatitude(lat);
-//                loc.setLongitude(lon);
-//            }
-//        }
-//        return loc;
-//    }
-
 
 
     //새로운 마커를 추가해주는 함수 (위도, 경도, 주소) 입력
@@ -306,13 +242,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
 
     //GPS
     class GPSListener implements LocationListener {
-        public void onLocationChanged(Location location) {
-//            Double latitude = location.getLatitude();
-//            Double longitude = location.getLongitude();
-//
-//            String message = "내 위치 -> Latitude : "+ latitude + "\nLongitude:"+ longitude;
-//            Log.d("Map", message);
-        }
+        public void onLocationChanged(Location location) { }
 
         public void onProviderDisabled(String provider) { }
 
@@ -333,11 +263,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
                 double latitude = location.getLatitude();
                 double longitude = location.getLongitude();
                 curLocation = location;
-//                String message = "최근 위치 -> Latitude : " + latitude + "\nLongitude:" + longitude;
-//
-//                Log.d("Map", message);
                 showCurrentLocation(latitude, longitude);  //GPS로 받은 위도 경도 전달
-
             }
 
             GPSListener gpsListener = new GPSListener();

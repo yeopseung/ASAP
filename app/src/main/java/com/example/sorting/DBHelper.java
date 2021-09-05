@@ -108,16 +108,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-//    public static int dbSize(){
-//        int size;
-//
-//        DBHelper tDBHelper = new DBHelper(context);
-//        ArrayList<AddressItem> tAddressItems = new ArrayList<>();
-//        tAddressItems = tDBHelper.getAddressList();
-//        size = tAddressItems.size();
-//
-//        return size;
-//    } // DB table 개수를 리턴해주는 메소드
 
     public void dbInitialize(){
 

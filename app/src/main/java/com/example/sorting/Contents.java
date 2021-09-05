@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class contents extends AppCompatActivity {
+public class Contents extends AppCompatActivity {
 
 
     private RecyclerView mRv_sorting;

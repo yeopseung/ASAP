@@ -7,9 +7,6 @@ import android.os.Bundle;
 import com.skt.Tmap.TMapTapi;
 import java.util.ArrayList;
 
-//import android.content.pm.PackageInfo; // loadAllPackages() 실행 시 필요
-//import android.util.Log; // loadAllPackages() 실행 시 필요
-//import java.util.List; // loadAllPackages() 실행 시 필요
 
 public class TmapActivity extends AppCompatActivity {
 
@@ -19,15 +16,6 @@ public class TmapActivity extends AppCompatActivity {
     private RecyclerView mRv_sorting;
 
     String APIKEY = "l7xxcdd63787be6c4e00aa5089373925bd14";
-
-    /* private void loadAllPackages(){
-         List<PackageInfo> appsInfo = getPackageManager().getInstalledPackages(PackageManager.GET_ACTIVITIES);
-         for(int i=0; i<appsInfo.size(); i++){
-             PackageInfo packageInfo = appsInfo.get(i);
-             Log.d("test", "설치된 패키지명 = " + packageInfo.packageName);
-         }
-     }*/
-    // 설치된 패키지명 모두 출력하는 함수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

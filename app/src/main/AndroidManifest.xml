@@ -32,10 +32,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".OrderCheck" />
-        <activity android:name=".contents" />
+        <activity android:name=".Contents" />
         <activity android:name=".ListMaking" />
-        <activity android:name=".reading" />
-        <activity android:name=".search" />
+        <activity android:name=".Reading" />
         <activity android:name=".GoogleMapActivity" />
         <activity android:name=".TmapActivity" />
         <activity
