@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         read = findViewById(R.id.barcode);
 
-        read.setOnClickListener(new View.OnClickListener() {
+        read.setOnClickListener(new View.OnClickListener() { // 목록 생성하기 버튼을 눌렀을 시 ListMaking 클래스로 이동
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,ListMaking.class);
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         googleMap = findViewById(R.id.googleMap);
-        googleMap.setOnClickListener(new View.OnClickListener() {
+        googleMap.setOnClickListener(new View.OnClickListener() { // 지도에서 확인하기 버튼을 눌렀을 시 GoogleMapActivity 클래스로 이동
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, GoogleMapActivity.class);
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         order = findViewById(R.id.orderCheck);
-        order.setOnClickListener(new View.OnClickListener() {
+        order.setOnClickListener(new View.OnClickListener() { // 배송 순서 확인하기 버튼을 눌렀을 시 OrderCheck 클래스로 이동
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,OrderCheck.class);
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         tmap = findViewById(R.id.tmap);
-        tmap.setOnClickListener(new View.OnClickListener() {
+        tmap.setOnClickListener(new View.OnClickListener() { // Tmap 연동하기 버튼을 눌렀을 시 TmapActivity 클래스로 이동
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TmapActivity.class);

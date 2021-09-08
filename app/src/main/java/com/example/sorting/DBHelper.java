@@ -22,12 +22,9 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         //데이터 베이스가 생성이 될 때 호출
-        // 데이터베이스 -> 테이블 -> 컬럼 -> 값
         db.execSQL("CREATE TABLE IF NOT EXISTS AddressList (id INTEGER PRIMARY KEY AUTOINCREMENT, number TEXT NOT NULL, address TEXT NOT NULL, latitude DOUBLE NOT NULL, longitude DOUBLE NOT NULL)");
     }
 
@@ -109,12 +106,12 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public void dbInitialize(){
+    public void dbInitialize(){ // DB를 초기화하는 메소드
 
         ArrayList<AddressItem> addressItems = new ArrayList<>();
 
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM AddressList");
 
-    } // DB 초기화
+    }
 }

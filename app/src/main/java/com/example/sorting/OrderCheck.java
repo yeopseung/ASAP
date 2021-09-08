@@ -33,7 +33,7 @@ public class OrderCheck extends AppCompatActivity {
         scanCode();
     }
 
-    private void scanCode() {
+    private void scanCode() { // 바코드 스캐너 생성
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setCaptureActivity(CaptureAct.class);    //세로모드 지원하기 위
         integrator.setOrientationLocked(false); //이것도
@@ -112,7 +112,6 @@ public class OrderCheck extends AppCompatActivity {
         for(int i=0; i<addressItems.size();i++) {
             if (addressItems.get(i).getNumber().equals(number)){ // QR코드의 운송장번호와 복사본의 운송장번호가 같을 경우
                 parcel_order = (i+1);
-//                parcel_order =  (addressItems.size() - i);
                 break;  //parcel_order에 순서를 저장
             }
             else if(i == (addressItems.size()-1)){  // 복사본에 일치하는 데이터가 없는 경우

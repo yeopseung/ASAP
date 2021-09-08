@@ -76,9 +76,7 @@ public class Reading extends AppCompatActivity {
     }
 
 
-    private void loadRecentDB() {
-
-        //저장되어 있던 DB를 가져온다.
+    private void loadRecentDB() { //저장되어 있던 DB를 mAddressItems 에 복사
         mAddressItems = mDBHelper.getAddressList();
         if (mAdapter == null) {
             mAdapter = new CustomAdapter(mAddressItems, this);

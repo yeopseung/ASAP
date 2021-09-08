@@ -45,10 +45,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return mAddressItems.size();
-    }
+    } //DB에 저장된 table 개수 리턴하는 메소드
 
     @Override
-    public boolean moveItem(int fromPosition, int toPosition) {
+    public boolean moveItem(int fromPosition, int toPosition) { //리사이클러 뷰에서 터치한 부분을 이동시키는 메소드
         AddressItem text = mAddressItems.get(fromPosition);
         mAddressItems.remove(fromPosition);
         mAddressItems.add(toPosition, text);
@@ -57,7 +57,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     @Override
-    public void removeItem(int position) {
+    public void removeItem(int position) { //리사이클러 뷰에서 터치한 부분을 삭제하는 메소드
         mAddressItems.remove(position);
         notifyItemRemoved(position);
     }
@@ -80,28 +80,28 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                     int curPos = getAdapterPosition(); // 현재 클릭한 리스트 아이템 위치
                     AddressItem addressItem = mAddressItems.get(curPos);
                     String[] strChoiceItems = {"안내하기","삭제하기"};
-                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext);  // Dialog 생성
                     builder.setTitle("원하는 작업을 선택 해주세요");
                     builder.setItems(strChoiceItems, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int position) {
-                            if(position == 0){
+                            if(position == 0){ // 안내하기를 눌렀을 경우 tMap 연동
                                 tMapTapi.invokeNavigate("", (float)addressItem.getLongitude(), (float)addressItem.getLatitude(), 0, true);
-                                // 연동하기
+                                // tMap 연동하기
                             }
-                            else if(position == 1) {
+                            else if(position == 1) { // 삭제하기를 눌렀을 경우 해당 위치 부분을 삭제하고 toast 메세지 출력
                                 int id=addressItem.getId();
                                 mDBHelper.deleteAddress(id);
                                 mAddressItems.remove(curPos);
                                 notifyItemRemoved(curPos);
                                 Toast.makeText(mContext,"목록이 제거 되었습니다.", Toast.LENGTH_SHORT).show();
-                                // 삭제하기
                             }
+                            else {;}
                         }
                     });
 
 
-                    builder.create();  //AlertDialog 팝업창 설정
+                    builder.create();
                     builder.show();
                 }
             });

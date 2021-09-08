@@ -26,13 +26,13 @@ public class ListMaking extends AppCompatActivity {
         list.setIcon(R.drawable.list);
         list.setTitle("목록 생성하기");
 
-        list.setNegativeButton("기존 목록에 추가", new DialogInterface.OnClickListener() {
+        list.setNegativeButton("기존 목록에 추가", new DialogInterface.OnClickListener() { // 기존 목록에 추가 버튼을 누를 시 Reading 클래스로 이동
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(ListMaking.this, Reading.class);
                 startActivity(intent);
             }
-        }).setPositiveButton("새 목록 만들기", new DialogInterface.OnClickListener() {
+        }).setPositiveButton("새 목록 만들기", new DialogInterface.OnClickListener() { // 새 목록 만들기 버튼을 누를 시 DB를 초기화하고 Reading 클래스로 이동
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 builder.setMessage("새 목록이 생성되면 기존 목록이 삭제됩니다.\n계속하시겠습니까?");
@@ -40,7 +40,7 @@ public class ListMaking extends AppCompatActivity {
                     builder.setNegativeButton("네", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface di, int which) {
-                            mDBHelper.dbInitialize(); // db 초기화
+                            mDBHelper.dbInitialize(); // DB 초기화
                             Intent intent = new Intent(ListMaking.this,Reading.class);
                             startActivity(intent);
                         }
