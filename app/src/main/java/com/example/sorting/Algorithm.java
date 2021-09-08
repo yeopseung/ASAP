@@ -24,7 +24,7 @@ public class Algorithm extends DBHelper {
 
 
     private int calcShortestNode(ArrayList<AddressItem> arrayList, double currXLocation, double currYLocation){
-        double shortestDist = 100; // 거리 중 최댓값보다 항상 커야 해서 무식하게 100 넣었음.
+        double shortestDist = 100;
         int shortestIndex = -1;
 
         for(int i=0; i<arrayList.size(); i++){
