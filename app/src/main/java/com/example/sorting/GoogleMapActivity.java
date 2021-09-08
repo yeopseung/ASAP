@@ -46,7 +46,6 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
     ConstraintLayout markers;
     Button sliding_button;
 
-
     boolean isPageOpen=false;
     private DBHelper mDBHelper = new DBHelper(this);
     private ArrayList<AddressItem> mAddressItems;
@@ -96,8 +95,6 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
                 })
                 .start();
 
-
-
         //슬라이딩 애니메이션을 활용 (화면 열기, 닫기)
         markers = findViewById(R.id.markerlist);
         translateUpAnim = AnimationUtils.loadAnimation(this,R.anim.translate_up);
@@ -146,6 +143,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
         });
 
 
+        //자동 정렬 버튼
         Button sort_button = findViewById(R.id.sort_button);
         sort_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,7 +163,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
         itemTouchHelper.startDrag(viewHolder);
     }
 
-
+    //마커목록 버튼 슬라이딩 애니메이션 (열고 닫는 기능)
     class SlidingAnimationListener implements Animation.AnimationListener{
 
         @Override
@@ -201,18 +199,18 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
     public void onMapReady(@NotNull GoogleMap googleMap) {
         this.googleMap = googleMap;
 
+        //초기화면: 서울
+        LatLng latLng = new LatLng(37.56229581976776, 126.98679607215686);
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             //현 위치를 불러와주는 함수
             startLocationService();
-            //GoogleMap에서 제공하는 현 위치 불러와주는 함수
+            //GoogleMap
             googleMap.setMyLocationEnabled(true);
             googleMap.getUiSettings().setZoomControlsEnabled(true);
 
-
         }
-
-
         //현재 마커 갱신
         for (int i=0;i< mAddressItems.size();i++){
             double mLatitude = mAddressItems.get(i).getLatitude();
@@ -277,8 +275,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
 
     }
 
-
-    //현 위치를 마커를 찍어 보여줌
+    //현 위치를 보여줌
     private void showCurrentLocation(Double latitude, Double longitude) {
         LatLng curPoint = new LatLng(latitude, longitude);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curPoint, 15));
