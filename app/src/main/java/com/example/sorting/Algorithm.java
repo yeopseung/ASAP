@@ -41,7 +41,7 @@ public class Algorithm extends DBHelper {
     // 현 위치에서 가장 가까운 노드의 인덱스(id) 리턴 -> runAlgorithm()메소드에서 활용 됨.
 
 
-    public int[] runAlgorithm (ArrayList<AddressItem> addressItems, double currXLocation, double currYLocation) {  //현 위치 x, y좌표 넣기. // db는 이미 static 으로 만든 addressItems 사용.
+    public int[] runAlgorithm (ArrayList<AddressItem> addressItems, double currXLocation, double currYLocation) {
 
         IsVisit = new boolean[addressItems.size()]; // 방문여부 체크 배열 사이즈 지정.
         for(int i=0; i<IsVisit.length; i++){ IsVisit[i] = false; } // 방문 여부는 모두 false 로 초기화.
@@ -66,7 +66,7 @@ public class Algorithm extends DBHelper {
         String tempAddress;     //주소
         double tempLatitude;     //위도
         double tempLongitude;    //경도
-        int[] shortArray;       //
+        int[] shortArray;
         ArrayList<AddressItem> items = new ArrayList<AddressItem>();
 
         shortArray = runAlgorithm (Items, currXLocation, currYLocation);

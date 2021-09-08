@@ -3,9 +3,14 @@ package com.example.sorting;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
+
 import com.skt.Tmap.TMapTapi;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class TmapActivity extends AppCompatActivity {
@@ -16,6 +21,15 @@ public class TmapActivity extends AppCompatActivity {
     private RecyclerView mRv_sorting;
 
     String APIKEY = "l7xxcdd63787be6c4e00aa5089373925bd14";
+
+//     private void loadAllPackages(){
+//         List<PackageInfo> appsInfo = getPackageManager().getInstalledPackages(PackageManager.GET_ACTIVITIES);
+//         for(int i=0; i<appsInfo.size(); i++){
+//             PackageInfo packageInfo = appsInfo.get(i);
+//             Log.d("test", "설치된 패키지명 = " + packageInfo.packageName);
+//         }
+//     }
+//    // 설치된 패키지명 모두 출력하는 함수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
