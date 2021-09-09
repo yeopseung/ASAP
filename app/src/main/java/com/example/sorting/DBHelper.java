@@ -108,8 +108,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void dbInitialize(){ // DB를 초기화하는 메소드
 
-        ArrayList<AddressItem> addressItems = new ArrayList<>();
-
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM AddressList");
 
