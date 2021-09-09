@@ -65,7 +65,7 @@ public class Reading extends AppCompatActivity {
 
                 // insert DB
                 mDBHelper.InsertAddress(trackingNum, address, latitude, longitude);
-                Toast.makeText(Reading.this, "할일 목록에 추가 되었습니다 !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Reading.this, "배송지 목록에 추가 되었습니다 !", Toast.LENGTH_SHORT).show();
 
                 scanCode();
 //

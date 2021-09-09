@@ -56,7 +56,6 @@ public class OrderCheck extends AppCompatActivity {
                 int total = addressItems.size();
                 int orderNumber = parcelOrder(trackingNum);
                 int Ronum = (addressItems.size() - orderNumber + 1);
-//                Toast.makeText(OrderCheck.this, "n / N 번째 택배입니다!", Toast.LENGTH_SHORT).show();
 
 
 
@@ -79,7 +78,6 @@ public class OrderCheck extends AppCompatActivity {
                         builder.setView(layout);
                     }
 
-//                    builder.setMessage("총 택배 수 : " + total + "\n");
                     builder.setMessage("총 택배 수 : " + total + "\n" + Ronum +"번째로 실어주세요!");
                     builder.setTitle("배송 순서 조회");
                     builder.setNegativeButton("스캔 더 하기", new DialogInterface.OnClickListener() {
